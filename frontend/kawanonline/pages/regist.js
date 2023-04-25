@@ -1,4 +1,28 @@
+import axios from "axios";
+import { useState } from "react";
+
 export default function Regist() {
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [Password, setPassword] = useState();
+
+  const data = {
+    username: username,
+    email: email,
+    password: Password,
+  };
+
+  const registData = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/v8/kawan-virtual/regist",
+        data
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className=" bg-cyan-500 font-comic h-screen flex flex-col gap-2 justify-center">
       <div className=" text-white absolute top-7">
@@ -14,26 +38,35 @@ export default function Regist() {
           className=" focus:outline-none rounded-xl p-2"
           type="text"
           placeholder="Username"
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className=" focus:outline-none rounded-xl p-2"
           type="text"
           placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className=" focus:outline-none rounded-xl p-2"
           type="Password"
           placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className=" flex justify-center">
-        <button className=" bg-cyan-700 text-white p-2 rounded-xl">
+        <button
+          onClick={registData}
+          className=" bg-cyan-700 text-white p-2 rounded-xl"
+        >
           Registrasi
         </button>
       </div>
-      <div className=" fixed bottom-0 p-4 w-screen bg-slate-950 text-white">
-        <p>&copy; copyright 2023</p>
-        <p className=" text-xs">Djamet Coder</p>
+      <div className=" fixed flex bottom-0 p-4 w-screen bg-slate-950 text-white">
+        <p>&copy; Copyright 2023</p>
+        <div className=" flex flex-col justify-center">
+          <hr className=" h-1 w-4 rotate-90 text-white" />
+        </div>
+        <p>Djamet Coder</p>
       </div>
     </div>
   );
