@@ -1,0 +1,26 @@
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+
+//method import
+const connectDB = require("./db/connectDB.js");
+const auth = require("./middleware/autentication.js");
+const authroute = require("./routes/authroute.js");
+const userRoute = require("./routes/userroutes.js");
+//app use
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/api/v8/kawan-virtual/", authroute);
+app.use("/api/v8/kawan-virtual/", auth, userRoute);
+
+const startServer = async () => {
+  try {
+    await connectDB(process.env.MONGO_URL);
+    app.listen(port, console.log(`Server running on ${port} ......`));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+startServer();
