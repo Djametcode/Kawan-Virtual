@@ -1,6 +1,6 @@
 export default function Regist() {
   return (
-    <div className=" bg-cyan-500 h-screen flex flex-col gap-2 justify-center">
+    <div className=" bg-cyan-500 font-comic h-screen flex flex-col gap-2 justify-center">
       <div className=" text-white absolute top-7">
         <h1 className=" w-screen text-center font-quick font-extrabold text-4xl">
           Kawan Online
@@ -27,9 +27,13 @@ export default function Regist() {
         />
       </div>
       <div className=" flex justify-center">
-        <button className=" bg-slate-200 text-black p-2 rounded-xl">
+        <button className=" bg-cyan-700 text-white p-2 rounded-xl">
           Registrasi
         </button>
+      </div>
+      <div className=" fixed bottom-0 p-4 w-screen bg-slate-950 text-white">
+        <p>&copy; copyright 2023</p>
+        <p className=" text-xs">Djamet Coder</p>
       </div>
     </div>
   );
