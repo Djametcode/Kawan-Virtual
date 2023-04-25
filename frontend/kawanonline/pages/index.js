@@ -1,4 +1,4 @@
-import Login from "@/component/login";
+import Login from "@/components/login";
 import Link from "next/link";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
         <div className=" flex justify-center">
           <Link
             className=" w-44 text-center text-white border border-white p-2 rounded-lg"
-            href="/"
+            href="/login"
           >
             Login dengan Email
           </Link>

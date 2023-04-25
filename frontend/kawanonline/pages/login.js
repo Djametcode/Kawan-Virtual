@@ -2,23 +2,22 @@ import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Regist() {
-  const [username, setUsername] = useState();
+export default function Login() {
   const [email, setEmail] = useState();
   const [Password, setPassword] = useState();
 
   const data = {
-    username: username,
     email: email,
     password: Password,
   };
 
-  const registData = async () => {
+  const loginData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v8/kawan-virtual/regist",
+        "http://localhost:3000/api/v8/kawan-virtual/login",
         data
       );
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -33,18 +32,12 @@ export default function Regist() {
           </p>
         </h1>
       </div>
-      <div className=" ml-11 -translate-y-2 text-white">
+      {/* <div className=" ml-11 -translate-y-2 text-white">
         <Link className=" bg-slate-600 p-2 rounded-xl" href="/">
           {`<- Kembali ke Login`}
         </Link>
-      </div>
-      <div className=" flex flex-col justify-center p-5 rounded-xl gap-1 bg-slate-200 ml-11 mr-11">
-        <input
-          className=" focus:outline-none rounded-xl p-2"
-          type="text"
-          placeholder="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
+      </div> */}
+      <div className=" flex flex-col justify-center p-5 rounded-3xl gap-1 bg-slate-200 ml-11 mr-11">
         <input
           className=" focus:outline-none rounded-xl p-2"
           type="text"
@@ -60,10 +53,10 @@ export default function Regist() {
       </div>
       <div className=" flex justify-center">
         <button
-          onClick={registData}
+          onClick={loginData}
           className=" bg-cyan-700 text-white p-2 rounded-xl"
         >
-          Registrasi
+          Login
         </button>
       </div>
       <div className=" fixed flex bottom-0 p-4 w-screen bg-slate-950 text-white">
