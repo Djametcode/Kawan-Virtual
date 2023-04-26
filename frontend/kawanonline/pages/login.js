@@ -13,6 +13,10 @@ export default function Login(request) {
   };
   const router = useRouter();
 
+  const redirectLanding = () => {
+    router.push("/landing");
+  };
+
   const loginData = async () => {
     event.preventDefault();
     try {
@@ -23,7 +27,7 @@ export default function Login(request) {
       const datas = response.data;
       const { msg, token } = datas;
       await localStorage.setItem("token", token);
-      await router.push("/landing");
+      await redirectLanding();
     } catch (error) {
       console.log(error);
     }
