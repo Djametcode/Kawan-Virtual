@@ -22,8 +22,8 @@ export default function Login(request) {
       );
       const datas = response.data;
       const { msg, token } = datas;
-      localStorage.setItem("token", token);
-      router.push("/landing");
+      await localStorage.setItem("token", token);
+      await router.push("/landing");
     } catch (error) {
       console.log(error);
     }
