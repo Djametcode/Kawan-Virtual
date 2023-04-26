@@ -1,8 +1,9 @@
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-export default function Login() {
+export default function Login(request) {
   const [email, setEmail] = useState();
   const [Password, setPassword] = useState();
 
@@ -10,14 +11,19 @@ export default function Login() {
     email: email,
     password: Password,
   };
+  const router = useRouter();
 
   const loginData = async () => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:3000/api/v8/kawan-virtual/login",
         data
       );
-      console.log(response.data);
+      const datas = response.data;
+      const { msg, token } = datas;
+      localStorage.setItem("token", token);
+      router.push("/api/hello");
     } catch (error) {
       console.log(error);
     }
