@@ -1,5 +1,4 @@
 import axios from "axios";
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -18,7 +17,6 @@ export default function Login(request) {
   };
 
   const loginData = async () => {
-    event.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:3000/api/v8/kawan-virtual/login",
