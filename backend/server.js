@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 const cors = require("cors");
 
 //method import
@@ -19,7 +19,7 @@ app.use("/api/v8/kawan-virtual/", auth, userRoute);
 const startServer = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
-    app.listen(port, console.log(`Server running on ${port} ......`));
+    app.listen(port, console.log(`Server running ......`));
   } catch (error) {
     console.log(error);
   }
