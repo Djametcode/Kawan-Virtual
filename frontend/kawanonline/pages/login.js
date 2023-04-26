@@ -19,7 +19,7 @@ export default function Login() {
   const loginData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v8/kawan-virtual/login",
+        "https://agile-rose-lingerie.cyclic.app/api/v8/kawan-virtual/login",
         data
       );
       const datas = response.data;
