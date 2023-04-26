@@ -5,13 +5,13 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function Landing() {
-  const route = useRouter();
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      route.push("/");
-    }
-  }, []);
+  // const route = useRouter();
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     route.push("/");
+  //   }
+  // }, []);
   return (
     <div>
       <div>
