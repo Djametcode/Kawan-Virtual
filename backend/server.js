@@ -19,7 +19,7 @@ app.use("/api/v8/kawan-virtual/", auth, userRoute);
 const startServer = async () => {
   try {
     await connectDB(MONGO_URL);
-    app.listen(port, console.log(`server running ....`));
+    app.listen(console.log(`server running ....`));
   } catch (error) {
     console.log(error);
   }
