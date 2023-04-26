@@ -23,7 +23,7 @@ export default function Login(request) {
       const datas = response.data;
       const { msg, token } = datas;
       localStorage.setItem("token", token);
-      router.push("/api/hello");
+      router.push("/landing");
     } catch (error) {
       console.log(error);
     }
