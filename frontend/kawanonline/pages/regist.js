@@ -16,7 +16,7 @@ export default function Regist() {
   const registData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v8/kawan-virtual/regist",
+        "https://calm-puce-codfish-ring.cyclic.app/api/v8/kawan-virtual/regist",
         data
       );
     } catch (error) {

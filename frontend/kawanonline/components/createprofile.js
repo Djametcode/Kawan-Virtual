@@ -35,7 +35,7 @@ export default function CreateProfile() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v8/kawan-virtual/buat-profil",
+        "https://calm-puce-codfish-ring.cyclic.app/api/v8/kawan-virtual/buat-profil",
         data,
         config
       );
