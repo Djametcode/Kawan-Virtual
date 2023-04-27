@@ -52,4 +52,15 @@ const getAllUser = async (req, res) => {
   }
 };
 
-module.exports = { BuatProfile, updateProfile, getAllUser };
+const getUserById = async (req, res) => {
+  try {
+    const { Id: userId } = req.params;
+    const data = await profileModel.findOne({ _id: userId });
+
+    return res.status(200).json({ data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { BuatProfile, updateProfile, getAllUser, getUserById };

@@ -11,6 +11,7 @@ module.exports = {
         quick: ["Quicksand", "sans-serif"],
         comic: ["Comic Neue", "cursive"],
       },
+      backgroundImage: {},
     },
   },
   plugins: [],

@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState();
   const [Password, setPassword] = useState();
+  const [token, setToken] = useState();
+  const [id, setId] = useState();
 
   const data = {
     email: email,
@@ -13,23 +15,25 @@ export default function Login() {
   const router = useRouter();
 
   const redirectLanding = () => {
-    router.push("/landing");
+    router.push("/makeprofile");
   };
 
   const loginData = async () => {
     try {
       const response = await axios.post(
-        "https://calm-puce-codfish-ring.cyclic.app/api/v8/kawan-virtual/login",
+        "http://localhost:3000/api/v8/kawan-virtual/login",
         data
       );
       const datas = response.data;
-      const { msg, token } = datas;
-      await localStorage.setItem("token", token);
-      await redirectLanding();
+      const { msg, token, id } = datas;
+      localStorage.setItem("token", token);
+      localStorage.setItem("id", id);
+      redirectLanding();
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <div className=" bg-cyan-500 font-comic h-screen flex flex-col gap-2 justify-center">
       <div className=" text-white absolute top-7">
@@ -40,11 +44,6 @@ export default function Login() {
           </p>
         </h1>
       </div>
-      {/* <div className=" ml-11 -translate-y-2 text-white">
-        <Link className=" bg-slate-600 p-2 rounded-xl" href="/">
-          {`<- Kembali ke Login`}
-        </Link>
-      </div> */}
       <div className=" flex flex-col justify-center p-5 rounded-3xl gap-1 bg-slate-200 ml-11 mr-11">
         <input
           className=" focus:outline-none rounded-xl p-2"
